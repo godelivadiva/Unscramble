@@ -73,15 +73,17 @@ class GameFragment : Fragment() {
     */
     private fun onSubmitWord() {
         val playerWord = binding.textInputEditText.text.toString()
+        // jika inputan benar
         if (viewModel.isUserWordCorrect(playerWord)) {
             setErrorTextField(false)
-
             if (viewModel.nextWord()) {
                 updateNextWordOnScreen()
             } else {
                 showFinalScoreDialog()
             }
-        } else {
+        }
+        // jika inputan salah
+        else {
             setErrorTextField(true)
         }
     }
@@ -141,6 +143,7 @@ class GameFragment : Fragment() {
         activity?.finish()
     }
 
+    // menghancurkan fragment
     override fun onDetach() {
         super.onDetach()
         Log.d("GameFragment", "GameFragment destroyed!")
@@ -163,6 +166,7 @@ class GameFragment : Fragment() {
      * Displays the next scrambled word on screen.
      */
     private fun updateNextWordOnScreen() {
+        // set value pada perhitungan angkka dan score
         binding.wordCount.text = viewModel.currentWordCount.toString() +" of 10 words"
         binding.score.text = viewModel.score.toString()
         binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord

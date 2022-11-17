@@ -4,11 +4,11 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel(){
-    private var _score = 0
+    private var _score = 0 // default value score
     val score: Int
         get() = _score
 
-    private var _currentWordCount = 0
+    private var _currentWordCount = 0 // default value word count
     val currentWordCount: Int
         get() = _currentWordCount
 
@@ -53,6 +53,7 @@ class GameViewModel : ViewModel(){
     /*
     * Re-initializes the game data to restart the game.
     */
+    // set value ke 0
     fun reinitializeData() {
         _score = 0
         _currentWordCount = 0
