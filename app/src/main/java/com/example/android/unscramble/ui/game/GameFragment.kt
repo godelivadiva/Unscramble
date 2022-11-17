@@ -79,6 +79,7 @@ class GameFragment : Fragment() {
             if (viewModel.nextWord()) {
                 updateNextWordOnScreen()
             } else {
+                binding.score.text = viewModel.score.toString()
                 showFinalScoreDialog()
             }
         }
